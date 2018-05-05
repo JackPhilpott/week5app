@@ -124,3 +124,31 @@ function loadearthquakelayer(earthquakedata) {
         }).addTo(mymap); 
     mymap.fitBounds(earthquakelayer.getBounds());
 }
+
+// week5 - TESTING AJAX
+// define the global variable to process the AJAX request
+var  xhr;  
+function callDivChange() {
+
+	 xhr = new XMLHttpRequest();
+
+	 // use an HTTP request here as Edge doesn't work with HTTPS over express
+	 xhr.open('GET', 'http://developer.cege.ucl.ac.uk:30261/dir1/dir2/objectTest5.html');
+	 xhr.onreadystatechange = processDivChange;
+	xhr.send();
+}  
+function processDivChange() {
+	// while waiting response from server
+	if (xhr.readyState < 4)    {}                     
+       ///4 = response from server has been completely loaded.
+    else {
+		//200-300 --> all successful
+		if (xhr.readyState === 4) {
+            document.getElementById('ajaxtest').innerHTML = xhr.responseText;
+    }
+}
+}
+
+
+
+
